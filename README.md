@@ -6,7 +6,7 @@ A simple regular expression engine for ASCII text.
 
 ```
 let Regex = require('kld-regex').Regex;
-let runner = Regex.parse("(abc)+");
+let runner = Regex.compile("(abc)+");
 ```
 
 ## Get first match

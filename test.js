@@ -1,23 +1,27 @@
 #!/usr/bin/env node
 
 let Regex = require('./lib/Regex'),
+	NFAGraphConverter = require('./lib/NFAGraphConverter'),
 	Table = require("kld-text-utils").Table;
 
 // parser.ignoreWhitespace = false;
 let compiler = new Regex();
-let runner = compiler.parse("(abc)+");
+let nfa_graph = compiler.parse("(abc)+");
 
-if (runner !== null) {
+if (nfa_graph !== null) {
+	var graphCompiler = new NFAGraphConverter();
+	var runner = graphCompiler.convert(nfa_graph);
+
 	console.log("NFA Nodes");
 	console.log("=========");
-	console.log(compiler.nfa_graph.toString());
+	console.log(nfa_graph.toString());
 
 	var table = new Table();
 	table.headers = ["ID", "NFAs", "Accept"];
 	console.log();
 	console.log("DFA Nodes");
 	console.log("=========");
-	compiler.dfa_graph.forEach((node, index) => {
+	graphCompiler.dfa_nodes.forEach((node, index) => {
 		table.addRow([index, node, node.acceptState]);
 	});
 	console.log(table.toString());
