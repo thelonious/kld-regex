@@ -1,33 +1,32 @@
 #!/usr/bin/env node
 
 let Regex = require('./lib/Regex'),
-	parser = new Regex(),
-	NFAGraphConverter = require('./lib/NFAGraphConverter'),
-	converter = new NFAGraphConverter();
+	Table = require("kld-text-utils").Table;
 
 // parser.ignoreWhitespace = false;
-let pattern = parser.parse("(abc)+");
+let compiler = new Regex();
+let runner = compiler.parse("(abc)+");
 
-if (pattern !== null) {
-	pattern.index();
-	console.log(pattern.toString());
+if (runner !== null) {
+	console.log("NFA Nodes");
+	console.log("=========");
+	console.log(compiler.nfa_graph.toString());
 
-	var runner = converter.convert(pattern);
-
-	var table = runner.table;
-	var dfa_nodes = converter.dfa_nodes;
+	var table = new Table();
+	table.headers = ["ID", "NFAs", "Accept"];
 	console.log();
 	console.log("DFA Nodes");
 	console.log("=========");
-	dfa_nodes.forEach((node, index) => {
-		console.log("%s: %s: %s", index, node, node.acceptState);
+	compiler.dfa_graph.forEach((node, index) => {
+		table.addRow([index, node, node.acceptState]);
 	});
+	console.log(table.toString());
 
 	console.log();
 	console.log("Table");
 	console.log("=====");
 	console.log("let table = [");
-	table.forEach(entry => {
+	runner.table.forEach(entry => {
 		let transitions = entry[0];
 		let acceptState = entry[1];
 
@@ -55,7 +54,7 @@ if (pattern !== null) {
 			offset = result.endingOffset;
 		}
 		else {
-			offset = result.startingOffset + 1;
+			offset++;
 		}
 	} while (offset < source.length);
 }
