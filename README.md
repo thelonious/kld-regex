@@ -5,7 +5,7 @@ A simple regular expression engine for ASCII text.
 ## Compile Regex
 
 ```
-let Regex = require('./lib/Regex');
+let Regex = require('kld-regex').Regex;
 let runner = Regex.parse("(abc)+");
 ```
 
