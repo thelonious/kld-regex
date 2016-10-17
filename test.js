@@ -6,7 +6,7 @@ let Regex = require('./lib/Regex'),
 	converter = new NFAGraphConverter();
 
 // parser.ignoreWhitespace = false;
-let pattern = parser.parse("a+");
+let pattern = parser.parse("(abc)+");
 
 if (pattern !== null) {
 	pattern.index();
@@ -39,7 +39,7 @@ if (pattern !== null) {
 	console.log("Matches");
 	console.log("=======");
 
-	var source = "aaabbbaaa";
+	var source = "abcdefabc";
 	var offset = 0;
 
 	console.log("source = '%s'", source);
@@ -50,7 +50,7 @@ if (pattern !== null) {
 		if (result.acceptState != -1) {
 			var text = source.substring(result.startingOffset, result.endingOffset);
 
-			console.log("[%s:%s] %s", result.startingOffset, result.endingOffset, text);
+			console.log("source[%s:%s] = %s", result.startingOffset, result.endingOffset, text);
 
 			offset = result.endingOffset;
 		}
