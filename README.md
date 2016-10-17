@@ -1,6 +1,8 @@
 # kld-regex
 
-A simple regular expression engine for ASCII text
+A simple regular expression engine for ASCII text.
+
+> NOTE: The API is pretty bad right now. Expect it to change.
 
 ## Compile regex to NFA Graph
 
@@ -48,8 +50,6 @@ source = 'abcdefabc'
 source[0:3] = abc
 source[6:9] = abc
 ```
-
-Admittedly, the API needs to be improved, but this is the first version that is somewhat complete.
 
 ## Supported operators
 
