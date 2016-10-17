@@ -53,23 +53,23 @@ source[6:9] = abc
 
 ## Supported operators
 
-| Type                                  | Example   |
-|---------------------------------------|-----------|
-| Sequence:                             | abc       |
-| Alternation:                          | a|b|c     |
-| Grouping:                             | (ab)|(cd) |
-| Repeat zero-or-more (Kleene closure): | \d*\.\d*  |
-| Repeat one-or-more (Positive closure):| \d+\.\d+  |
-| Optional:                             | (abc)?def |
-| Character Classes:                    | [abc]     |
-| Character Class Ranges:               | [a-c]     |
-| Character Class Negation:             | [^abc]    |
-| Empty Character Class:                | []        |
-| Negated Empty Character Class:        | [^]       |
-| Digit Character Class:                | \d        |
-| Not-Digit Character Class:            | \D        |
-| Whitespace Character Class:           | \s        |
-| Not-Whitespace Character Class:       | \S        |
-| Word Character Class:                 | \w        |
-| Not-Word Character Class:             | \W        |
-| Hex Character Values:                 | \x20      |
+| Type                                  | Example     |
+|---------------------------------------|-------------|
+| Sequence:                             | abc         |
+| Alternation:                          | a|b|c       |
+| Grouping:                             | (ab)|(cd)   |
+| Repeat zero-or-more (Kleene closure): | \d\*\\.\d\* |
+| Repeat one-or-more (Positive closure):| \d+\\.\d+   |
+| Optional:                             | (abc)?def   |
+| Character Classes:                    | [abc]       |
+| Character Class Ranges:               | [a-c]       |
+| Character Class Negation:             | [^abc]      |
+| Empty Character Class:                | []          |
+| Negated Empty Character Class:        | [^]         |
+| Digit Character Class:                | \d          |
+| Not-Digit Character Class:            | \D          |
+| Whitespace Character Class:           | \s          |
+| Not-Whitespace Character Class:       | \S          |
+| Word Character Class:                 | \w          |
+| Not-Word Character Class:             | \W          |
+| Hex Character Values:                 | \x20        |
