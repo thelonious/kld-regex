@@ -2,43 +2,46 @@
 
 A simple regular expression engine for ASCII text.
 
-> NOTE: The API is pretty bad right now. Expect it to change.
-
-## Compile regex to NFA Graph
+## Compile Regex
 
 ```
 let Regex = require('./lib/Regex');
-let nfa_graph = new Regex().parse("(abc)+");
+let runner = Regex.parse("(abc)+");
 ```
 
-## Convert NFA Graph to DFA Graph
+## Get first match
 
 ```
-let NFAGraphConverter = require('./lib/NFAGraphConverter');
-let runner = new NFAGraphConverter().convert(nfa_graph);
+var source = "abcdefabc";
+var match = runner.next(source);
+
+if (match !== null) {
+	console.log(
+		"source[%s:%s] = %s",
+		match.startingOffset,
+		match.endingOffset,
+		match.text
+	);
+}
 ```
 
+> `runner.next` has optional 2nd and 3rd arguments. The 2nd argument is the starting offset where the Regex should begin its match. The 3rd argument indicates where the match should stop.
 
-## Use DFA to match text
+## Get all matches
 
 ```
-let source = "abcdefabc";
-var offset = 0;
+var source = "abcdefabc";
+var matches = runner.all(source);
 
-do {
-	var result = runner.next(source, offset, source.length);
-
-	if (result.acceptState != -1) {
-		var text = source.substring(result.startingOffset, result.endingOffset);
-
-		console.log("source[%s:%s] = %s", result.startingOffset, result.endingOffset, text);
-
-		offset = result.endingOffset;
-	}
-	else {
-		offset = result.startingOffset + 1;
-	}
-} while (offset < source.length);
+console.log("source = '%s'", source);
+runner.all(source).forEach(match => {
+	console.log(
+		"source[%s:%s] = %s",
+		match.startingOffset,
+		match.endingOffset,
+		match.text
+	);
+});
 ```
 
 This will print:
