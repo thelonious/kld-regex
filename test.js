@@ -39,24 +39,17 @@ if (runner !== null) {
 	console.log("=======");
 
 	var source = "abcdefabc";
-	var offset = 0;
+	var matches = runner.all(source);
 
 	console.log("source = '%s'", source);
-
-	do {
-		var result = runner.next(source, offset, source.length);
-
-		if (result.acceptState != -1) {
-			var text = source.substring(result.startingOffset, result.endingOffset);
-
-			console.log("source[%s:%s] = %s", result.startingOffset, result.endingOffset, text);
-
-			offset = result.endingOffset;
-		}
-		else {
-			offset++;
-		}
-	} while (offset < source.length);
+	runner.all(source).forEach(match => {
+		console.log(
+			"source[%s:%s] = %s",
+			match.startingOffset,
+			match.endingOffset,
+			match.text
+		);
+	});
 }
 else {
 	console.log(null);
