@@ -1,6 +1,6 @@
 {
   "name": "kld-regex",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple regular expression engine for ASCII text written in JavaScript",
   "main": "index.js",
   "dependencies": {
