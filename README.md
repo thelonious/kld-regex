@@ -67,6 +67,7 @@ source[6:9] = abc
 | Empty Character Class:                | []          |
 | Negated Empty Character Class:        | [^]         |
 | Digit Character Class:                | \d          |
+| Match all except \r and \n:           | .           |
 | Not-Digit Character Class:            | \D          |
 | Whitespace Character Class:           | \s          |
 | Not-Whitespace Character Class:       | \S          |
