@@ -2,7 +2,7 @@
 
 let Regex = require('../lib/Regex');
 
-let runner = Regex.parse("(abc)+");
+let runner = Regex.compile("(abc)+");
 var source = "abcdefabc";
 var matches = runner.all(source);
 

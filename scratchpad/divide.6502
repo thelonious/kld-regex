@@ -1,0 +1,27 @@
+;
+; divide
+;
+
+    .org    $40
+    .db     $40, $00, $00
+
+;
+;   main
+;
+    .org    $600
+    ldx     #8
+    lda     $40
+    sta     $43
+    lda     $41
+divid
+    asl     $43
+    rol     a
+    cmp     $42
+    bcc     chcnt
+    sbc     $42
+    inc     $43
+chcnt
+    dex
+    bne     divid
+    sta     $44
+    brk

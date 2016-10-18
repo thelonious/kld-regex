@@ -1,6 +1,6 @@
 # kld-regex
 
-A simple regular expression engine for ASCII text.
+A simple regular expression engine (and lexer) for ASCII text.
 
 ## Compile Regex
 
@@ -76,3 +76,47 @@ source[6:9] = abc
 | Word Character Class:                 | \w          |
 | Not-Word Character Class:             | \W          |
 | Hex Character Values:                 | \x20        |
+
+
+## Define a list of token types
+
+Each token type should have the following properties:
+
+- type: a string
+- pattern: a kld-regex string pattern (regex)
+- caseSensitive: an optional boolean (defaults to true)
+
+```
+var tokens = [
+    /* 0 */ { type: "whitespace",   pattern: "\\s+" },
+    /* 1 */ { type: "comment",      pattern: "#[^\\r\\n]*" },
+    /* 2 */ { type: "identifier",   pattern: "[a-z_][a-z0-9_]*", caseSensitive: false }
+];
+```
+
+## Build Lexer
+
+```
+let Lexer = require('kld-lexer').Lexer;
+let lexer = new Lexer();
+let runner = lexer.compile(tokens);
+```
+
+## Match against source
+
+```
+let source = fs.readFileSync('sample.txt', { encoding: "utf8" });
+
+runner.all(source).forEach(match => {
+	// skip whitespace, but show comments
+	if (match.type > 0) {
+		console.log(
+			"%s: [%s,%s]: %s",
+			tokens[match.type].type,
+			match.startingOffset,
+			match.endingOffset,
+			match.text
+		);
+	}
+});
+```
