@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-let Regex = require('./lib/Regex'),
-	NFAGraphConverter = require('./lib/NFAGraphConverter'),
+let Regex = require('../lib/Regex'),
+	NFAGraphConverter = require('../lib/NFAGraphConverter'),
 	Table = require("kld-text-utils").Table;
 
 // parser.ignoreWhitespace = false;

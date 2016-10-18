@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-let Regex = require('./lib/Regex');
+let Regex = require('../lib/Regex');
 
 let runner = Regex.parse("(abc)+");
 var source = "abcdefabc";
