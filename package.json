@@ -4,7 +4,7 @@
   "description": "A simple regular expression engine for ASCII text written in JavaScript",
   "main": "index.js",
   "dependencies": {
-    "kld-text-utils": "0.0.2"
+    "kld-text-utils": "0.0.3"
   },
   "devDependencies": {
     "mocha": "^3.1.2"
