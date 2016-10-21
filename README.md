@@ -25,7 +25,7 @@ if (match !== null) {
 }
 ```
 
-> `runner.next` has optional 2nd and 3rd arguments. The 2nd argument is the starting offset where the Regex should begin its match. The 3rd argument indicates where the match should stop.
+> `runner.next` has optional 2nd and 3rd arguments. The 2nd argument is the starting offset where the Regex should begin its match in the specified string. The 3rd argument indicates the offset where the match should stop. Note that the ending offset is not included in the match range. This allows the user to say things like `runner.next(source, currentOffset, source.length)`. If the starting offset is not specified, it defaults to 0. If the ending offset is not specified, it defaults to the specified string's length.
 
 ## Get all matches
 
