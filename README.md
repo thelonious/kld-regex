@@ -2,6 +2,16 @@
 
 A simple regular expression engine (and lexer) for ASCII text.
 
+- Regular Expressions
+    - [Compile Regex](#compile-regex)
+    - [Get first match](#get-first-match)
+    - [Get all matches](#get-all-matches)
+    - [Supported operators](#supported-operators)
+- Lexers
+    - [Define a list of token types](#define-a-list-of-token-types)
+    - [Build Lexer](#build-lexer)
+    - [Match against source](#match-against-source)
+
 ## Compile Regex
 
 ```
