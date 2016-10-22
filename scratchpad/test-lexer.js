@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 let Lexer = require('../lib/Lexer'),
-	Table = require('kld-text-utils').Table,
-	fs = require('fs');
+    Table = require('kld-text-utils').Table,
+    fs = require('fs');
 
 // build token table
 var tokens = [
@@ -53,14 +53,14 @@ table.headers = ["Type", "Start", "End", "Text"];
 
 // add rows to table
 runner.all(source).forEach(match => {
-	if (match.type > 1) {
-		table.addRow([
-			tokens[match.type].type,
-			match.startingOffset,
-			match.endingOffset,
-			match.text
-		]);
-	}
+    if (match.type > 1) {
+        table.addRow([
+            tokens[match.type].type,
+            match.startingOffset,
+            match.endingOffset,
+            match.text
+        ]);
+    }
 });
 
 // show the result
