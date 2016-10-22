@@ -26,12 +26,12 @@ var source = "abcdefabc";
 var match = runner.next(source);
 
 if (match !== null) {
-	console.log(
-		"source[%s:%s] = %s",
-		match.startingOffset,
-		match.endingOffset,
-		match.text
-	);
+    console.log(
+        "source[%s:%s] = %s",
+        match.startingOffset,
+        match.endingOffset,
+        match.text
+    );
 }
 ```
 
@@ -44,12 +44,12 @@ var source = "abcdefabc";
 var matches = runner.all(source);
 
 runner.all(source).forEach(match => {
-	console.log(
-		"source[%s:%s] = %s",
-		match.startingOffset,
-		match.endingOffset,
-		match.text
-	);
+    console.log(
+        "source[%s:%s] = %s",
+        match.startingOffset,
+        match.endingOffset,
+        match.text
+    );
 });
 ```
 
@@ -118,15 +118,15 @@ let runner = lexer.compile(tokens);
 let source = fs.readFileSync('sample.txt', { encoding: "utf8" });
 
 runner.all(source).forEach(match => {
-	// skip whitespace, but show comments
-	if (match.type > 0) {
-		console.log(
-			"%s: [%s,%s]: %s",
-			tokens[match.type].type,
-			match.startingOffset,
-			match.endingOffset,
-			match.text
-		);
-	}
+    // skip whitespace, but show comments
+    if (match.type > 0) {
+        console.log(
+            "%s: [%s,%s]: %s",
+            tokens[match.type].type,
+            match.startingOffset,
+            match.endingOffset,
+            match.text
+        );
+    }
 });
 ```
