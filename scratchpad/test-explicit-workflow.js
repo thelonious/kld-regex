@@ -16,8 +16,8 @@ if (nfa_graph !== null) {
     console.log("=========");
     console.log(nfa_graph.toString());
 
-    var table = new Table();
-    table.headers = ["ID", "NFAs", "Accept"];
+    var table = new Table(["ID", "NFAs", "Accept"]);
+    table.divider = "-";
     console.log();
     console.log("DFA Nodes");
     console.log("=========");
